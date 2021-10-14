@@ -22,7 +22,9 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
+export const firestore = firebase.firestore();
 export const messagesRef = database.ref('messages');
+// ここでfirebase.databaseにデータを登録する処理が走っている
 
 export const pushMessage = ({ name, text }) => {
   messagesRef.push({ name, text });

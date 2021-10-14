@@ -92,7 +92,7 @@ export default function SignIn({ setName }) {
             className={classes.submit}
             disabled={disabled}
             onClick={() => {
-              setName(string);
+                setName(string);
             }}
           >
             はじめる

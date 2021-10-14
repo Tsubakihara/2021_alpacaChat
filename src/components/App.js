@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-import Main from './Main';
+import ChatListPage from "./ChatListPage/ChatListPage";
 import SignIn from './SignIn';
 import config from '../config.json';
 
@@ -8,8 +7,8 @@ export default () => {
   const [name, setName] = useState('');
 
   if (config.signInEnabled && name === '') {
-    return <SignIn setName={setName} />;
+    return <SignIn setName={setName}/>;
   } else {
-    return <Main name={name} />;
+    return <ChatListPage username={name}/>;
   }
 };

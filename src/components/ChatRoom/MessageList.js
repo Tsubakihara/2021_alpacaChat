@@ -3,7 +3,7 @@ import { List } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import MessageItem from './MessageItem';
-import { messagesRef } from '../firebase';
+import {firestore, messagesRef} from '../../firebase';
 
 const useStyles = makeStyles({
   root: {
@@ -13,24 +13,13 @@ const useStyles = makeStyles({
   },
 });
 
-const MessageList = () => {
+const MessageList = (roomName) => {
   const [messages, setMessages] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
-    messagesRef
-      .orderByKey()
-      .limitToLast(15)
-      .on('value', (snapshot) => {
-        const messages = snapshot.val();
-        if (messages === null) return;
-
-        const entries = Object.entries(messages);
-        const newMessages = entries.map((entry) => {
-          const [key, nameAndText] = entry;
-          return { key, ...nameAndText };
-        });
-        setMessages(newMessages);
+      firestore.collection('rooms').where('name' == roomName).onSnapshot((snapshot)=> {
+          setMessages(snapshot.docs.map((doc)=> doc.data()))
       });
   }, []);
 
@@ -38,14 +27,14 @@ const MessageList = () => {
 
   return (
     <List className={classes.root}>
-      {messages.map(({ key, name, text }, index) => {
+      {messages.map(({ key, username, context, timestamp }, index) => {
         const isLastItem = length === index + 1;
 
         return (
           <MessageItem
             key={key}
-            name={name}
-            text={text}
+            name={username}
+            text={context}
             isLastItem={isLastItem}
           />
         );
