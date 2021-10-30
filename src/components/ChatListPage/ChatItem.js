@@ -18,10 +18,10 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const ChatItem = ({ isLastItem, name, userName }) => {
+const ChatItem = ({ isLastItem, username, roomname }) => {
     const ref = useRef(null);
     const classes = useStyles();
-    const avatarPath = gravatarPath(name);
+    const avatarPath = gravatarPath(roomname);
 
     useEffect(() => {
         if (isLastItem) {
@@ -35,7 +35,7 @@ const ChatItem = ({ isLastItem, name, userName }) => {
                 <Avatar src={avatarPath} />
             </ListItemAvatar>
             <ListItemText
-                primary={name}
+                primary={roomname}
                 secondary={
                     <Typography
                         component="span"
@@ -53,7 +53,7 @@ const ChatItem = ({ isLastItem, name, userName }) => {
                 //TODO: onclickで値が渡るようにしたい
                 onClick={() => {
                     return (
-                        <Main roomName={name} userName={userName} />
+                        <Main roomname={roomname} username={username} />
                     );
                 }}
             >

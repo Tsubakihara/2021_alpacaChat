@@ -13,12 +13,12 @@ const useStyles = makeStyles({
   },
 });
 
-const MessageList = (roomName) => {
+const MessageList = (props) => {
   const [messages, setMessages] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
-      firestore.collection('rooms').where('name' == roomName).onSnapshot((snapshot)=> {
+      firestore.collection('rooms').where('name' == props.roomname).onSnapshot((snapshot)=> {
           setMessages(snapshot.docs.map((doc)=> doc.data()))
       });
   }, []);

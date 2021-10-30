@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     },
 });
 
-const ChatList = ({username}) => {
+const ChatList = (props) => {
     const [chats, setChats] = useState([]);
     const classes = useStyles();
 
@@ -32,8 +32,8 @@ const ChatList = ({username}) => {
                 return (
                      <ChatItem
                          key={key}
-                         name={name}
-                         userName={username}
+                         roomname={name}
+                         username={props.name}
                          isLastItem={isLastItem}
                      />
                 );
