@@ -12,13 +12,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link
-        color="inherit"
-        href="https://twitter.com/diveintohacking"
-        target="_blank"
-        rel="noopener"
-      >
-        はむさん
+      <Link color="inherit" href="https://alpaca-connect.com/" target="_blank" rel="noopener">
+        アルパカコネクト
       </Link>
     </Typography>
   );
@@ -52,15 +47,15 @@ export default function SignIn({ setName }) {
 
   useEffect(() => {
     const disabled = string === '';
-    setDisabled(disabled);
-  }, [string]);
+    setDisabled(disabled)}, 
+    [string]);
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          ようこそ
+          チャットへようこそ
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -69,13 +64,12 @@ export default function SignIn({ setName }) {
             required
             fullWidth
             id="name"
-            label="ニックネーム"
+            label="ユーザー名"
             name="name"
             autoFocus
             onChange={(e) => setString(e.target.value)}
             onKeyDown={(e) => {
               if (isComposed) return;
-
               if (e.key === 'Enter') {
                 setName(e.target.value);
                 e.preventDefault();
