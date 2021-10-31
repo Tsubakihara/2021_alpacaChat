@@ -13,11 +13,8 @@ const useStyles = makeStyles({
     },
 });
 
-const ChatListPage = ({username}) => {
+const ChatListPage = ({setRoomName, username}) => {
     const classes = useStyles();
-    const [string, setString] = useState('');
-    const [isComposed, setIsComposed] = useState(false);
-    const [name, setName] = useState('');
 
     return (
         // returnできるタグは一つなので、内容全体をdivタグで囲う

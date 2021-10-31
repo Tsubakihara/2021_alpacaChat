@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const ChatItem = ({ isLastItem, username, roomname }) => {
+const ChatItem = ({ isLastItem, username, roomname, setRoomName}) => {
     const ref = useRef(null);
     const classes = useStyles();
     const avatarPath = gravatarPath(roomname);
@@ -50,11 +50,8 @@ const ChatItem = ({ isLastItem, username, roomname }) => {
                 type="button"
                 variant="contained"
                 color="primary"
-                //TODO: onclickで値が渡るようにしたい
                 onClick={() => {
-                    return (
-                        <Main roomname={roomname} username={username} />
-                    );
+                    setRoomName(roomname);
                 }}
             >
                 チャットルームを開く
