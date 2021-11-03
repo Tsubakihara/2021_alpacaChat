@@ -51,7 +51,7 @@ export default function ChatItem({ isLastItem, username, roomname, setRoomName})
                 variant="contained"
                 color="primary"
                 onClick={() => {
-                    setRoomName = setRoomname(roomname);
+                    setRoomName(roomname);
                 }}
             >
                 チャットルームを開く
