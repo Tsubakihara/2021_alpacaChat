@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
     Avatar, Button,
     ListItem,
@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const ChatItem = ({ isLastItem, username, roomname, setRoomName}) => {
+export default function ChatItem({ isLastItem, username, roomname, setRoomName}) {
     const ref = useRef(null);
     const classes = useStyles();
     const avatarPath = gravatarPath(roomname);
@@ -51,7 +51,7 @@ const ChatItem = ({ isLastItem, username, roomname, setRoomName}) => {
                 variant="contained"
                 color="primary"
                 onClick={() => {
-                    setRoomName(roomname);
+                    setRoomName = setRoomname(roomname);
                 }}
             >
                 チャットルームを開く
@@ -60,4 +60,4 @@ const ChatItem = ({ isLastItem, username, roomname, setRoomName}) => {
     );
 };
 
-export default ChatItem;
+
